@@ -1,0 +1,47 @@
+<header>
+	
+	<nav>
+		<ul>
+			<li>
+				<h1><strong><%= link_to "Articles", root_path %></strong></h1>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<p>
+					<%= link_to "Edit", edit_article_path(@article), class: "outline" %>
+				</p>
+			</li>
+			<li>
+				<p>					
+					<%= link_to "Destroy", article_path(@article), data: {
+						turbo_method: :delete,
+						turbo_confirm: "Are you sure?"
+					}, class: "secondary outline destroy" %>
+				</p>
+			</li>
+		</ul>
+	</nav>
+
+</header>
+
+<h1><%= @article.title %></h1>
+
+<article>
+	
+	<p><%= @article.body %></p>
+	
+</article>
+
+<h3>Comments</h3>
+<% @article.comments.each do |comment| %>
+	<blockquote>
+		<%= comment.body %>
+		<footer>
+			<%= comment.commenter %>
+		</footer>
+	</blockquote>
+<% end %>
+
+<h3>Add a comment</h3>
+<%= render 'comments/form' %>

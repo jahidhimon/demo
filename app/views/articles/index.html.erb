@@ -1,0 +1,32 @@
+<header>
+	<nav>
+		<ul>
+			<li>
+				<h1><strong><%= link_to "Articles", root_path %></strong></h1>
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<p>
+					<%= link_to "New Article", new_article_path %>
+				</p>
+			</li>
+		</ul>
+	</nav>
+</header>
+
+<div class="container">
+	<table role="grid">
+		<tbody>
+			<% @articles.each do |article| %>
+				<tr>
+					<td>
+						<%= link_to article.title, article %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+
+
